@@ -1,0 +1,2 @@
+13:16:56.223 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+13:16:56.667 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 45749132, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
