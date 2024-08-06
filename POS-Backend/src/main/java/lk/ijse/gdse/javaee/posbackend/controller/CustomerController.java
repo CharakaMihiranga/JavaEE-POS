@@ -1,20 +1,36 @@
 package lk.ijse.gdse.javaee.posbackend.controller;
 
+import jakarta.json.bind.Jsonb;
+import jakarta.json.bind.JsonbBuilder;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lk.ijse.gdse.javaee.posbackend.bo.BOFactory;
+import lk.ijse.gdse.javaee.posbackend.bo.custom.CustomerBO;
+import lk.ijse.gdse.javaee.posbackend.bo.custom.impl.CustomerBOImpl;
+import lk.ijse.gdse.javaee.posbackend.dao.custom.CustomerDAO;
+import lk.ijse.gdse.javaee.posbackend.dto.CustomerDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.naming.InitialContext;
+import javax.sound.midi.Soundbank;
 import javax.sql.DataSource;
+import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 
 @WebServlet(urlPatterns = "/customer", loadOnStartup = 2)
 public class CustomerController extends HttpServlet {
+
+    CustomerBO customerBO = (CustomerBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.CUSTOMER);
     static Logger logger = LoggerFactory.getLogger(CustomerController.class);
+    Jsonb jsonb = JsonbBuilder.create();
     Connection connection;
+
     @Override
     public void init(ServletConfig config) throws ServletException {
         logger.info("Init method Invoked");
@@ -26,6 +42,89 @@ public class CustomerController extends HttpServlet {
         }catch (Exception e){
             logger.error("Failed to connect to the database");
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        if (req.getContentType() == null || !req.getContentType().toLowerCase().startsWith("application/json")){
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
+        }
+        try(var writer = resp.getWriter()){
+            CustomerDto customer = jsonb.fromJson(req.getReader(), CustomerDto.class);
+            writer.write(customerBO.saveCustomer(customer, connection));
+            logger.info("Customer saved successfully");
+            resp.setStatus(HttpServletResponse.SC_CREATED);
+        } catch (Exception e) {
+            logger.error("Failed to save the customer");
+            resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        if (id != null && !id.trim().isEmpty()) {
+            try(var writer = resp.getWriter()){
+                var customerId = req.getParameter("id");
+                resp.setContentType("application/json");
+                var customer = customerBO.getCustomer(customerId, connection);
+                if (customer != null && customer.getSalary() > 1 ){
+                    System.out.println(customer);
+                    jsonb.toJson(customer, writer);
+                }else {
+                    resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+                    logger.error("Customer not found");
+                    writer.write("Customer not found");
+                }
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        } else if(req.getParameter("id") == null) {
+            try(var writer =resp.getWriter()){
+                List<CustomerDto> customers = customerBO.getAllCustomers(connection);
+                jsonb.toJson(customers, writer);
+            } catch (Exception e) {
+                resp.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+                logger.info("Cannot find customers");
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try( var writer = resp.getWriter()){
+            var customerId = req.getParameter("id");
+            CustomerDto customerDto = jsonb.fromJson(req.getReader(), CustomerDto.class);
+            if(customerBO.updateCustomer(customerId, customerDto, connection)){
+                resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+                logger.info("Customer Updated Successfully");
+            }else{
+                writer.write("Failed to update the customer");
+                logger.error("Failed to update the customer");
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try( var writer = resp.getWriter()){
+            var customerId = req.getParameter("id");
+            if(customerBO.deleteCustomer(customerId,connection)){
+                logger.info("Customer Deleted Successfully");
+                resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            }else{
+                writer.write("Failed to delete the customer");
+                logger.error("Failed to delete the customer");
+                resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

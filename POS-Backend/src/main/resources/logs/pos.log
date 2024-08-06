@@ -1,2 +1,100 @@
 13:16:56.223 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
 13:16:56.667 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 45749132, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+15:34:42.271 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+15:34:42.902 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1883611420, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:06:55.190 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:06:55.822 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 163121063, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:08:07.961 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:08:08.504 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1076004052, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:09:17.255 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:09:17.777 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1076004052, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:09:57.595 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:09:58.047 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 9271800, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:12:31.605 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:12:32.101 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 309115510, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:13:42.195 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:13:42.694 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 866426574, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:14:55.374 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:14:55.711 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 119605760, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:17:15.273 [RMI TCP Connection(8)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:17:15.598 [RMI TCP Connection(8)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1184028024, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:19:01.219 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:19:01.788 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 393528145, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:20:39.870 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:20:40.338 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 154336740, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:20:47.450 [http-nio-8080-exec-5] INFO  l.i.g.j.p.c.CustomerController - Student Updated Successfully
+18:32:19.505 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:32:19.980 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 773953707, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:32:47.069 [http-nio-8080-exec-6] INFO  l.i.g.j.p.c.CustomerController - Customer Deleted Successfully
+18:33:02.470 [http-nio-8080-exec-7] INFO  l.i.g.j.p.c.CustomerController - Customer saved successfully
+18:33:03.926 [http-nio-8080-exec-8] ERROR l.i.g.j.p.c.CustomerController - Failed to save the customer
+18:33:32.804 [http-nio-8080-exec-10] INFO  l.i.g.j.p.c.CustomerController - Customer saved successfully
+18:33:42.123 [http-nio-8080-exec-1] INFO  l.i.g.j.p.c.CustomerController - Customer saved successfully
+18:53:23.544 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:53:24.368 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 2127722963, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:55:23.587 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:55:23.889 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 4959131, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:57:12.681 [RMI TCP Connection(8)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:57:12.975 [RMI TCP Connection(8)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 464478216, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+18:58:08.200 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+18:58:08.768 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 2036980221, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+19:00:14.064 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+19:00:14.393 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 931893103, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+19:00:50.185 [RMI TCP Connection(8)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+19:00:50.504 [RMI TCP Connection(8)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1093807807, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+19:01:11.167 [RMI TCP Connection(10)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+19:01:11.431 [RMI TCP Connection(10)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 946932232, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+19:02:54.267 [RMI TCP Connection(13)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+19:02:54.530 [RMI TCP Connection(13)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 455248642, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+19:03:38.341 [RMI TCP Connection(16)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+19:03:38.619 [RMI TCP Connection(16)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 663090163, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+19:04:18.423 [RMI TCP Connection(20)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+19:04:18.701 [RMI TCP Connection(20)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 158265141, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+19:19:22.854 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+19:19:23.509 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1014072033, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+19:20:23.966 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+19:20:24.522 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1348287871, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+19:21:06.648 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+19:21:07.076 [RMI TCP Connection(5)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 978760104, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:05:25.362 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:05:25.965 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1076004052, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:06:49.539 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:06:50.135 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 965283359, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:08:47.212 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:08:47.786 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1296218522, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:09:07.808 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:09:08.292 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1265756632, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:09:14.041 [http-nio-8080-exec-2] ERROR l.i.g.j.p.c.CustomerController - Customer not found
+21:10:27.075 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:10:27.543 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 947754889, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:10:48.086 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:10:48.614 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 538194465, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:10:50.355 [http-nio-8080-exec-2] ERROR l.i.g.j.p.c.CustomerController - Customer not found
+21:10:52.026 [http-nio-8080-exec-3] ERROR l.i.g.j.p.c.CustomerController - Customer not found
+21:11:27.088 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:11:27.581 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 252948244, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:11:52.166 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:11:52.660 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 756248599, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:12:38.415 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:12:38.864 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1363220519, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:12:51.480 [http-nio-8080-exec-9] ERROR l.i.g.j.p.c.CustomerController - Customer not found
+21:36:41.340 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:36:41.969 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 463178228, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:37:08.066 [http-nio-8080-exec-7] INFO  l.i.g.j.p.c.CustomerController - Cannot find customers
+21:37:10.981 [http-nio-8080-exec-9] INFO  l.i.g.j.p.c.CustomerController - Cannot find customers
+21:37:45.922 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:37:46.541 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1116272238, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:37:48.413 [http-nio-8080-exec-5] INFO  l.i.g.j.p.c.CustomerController - Cannot find customers
+21:37:50.338 [http-nio-8080-exec-10] INFO  l.i.g.j.p.c.CustomerController - Cannot find customers
+21:38:22.534 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:38:22.993 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 215568101, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:38:45.379 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:38:45.867 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 331468443, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:38:58.049 [http-nio-8080-exec-3] INFO  l.i.g.j.p.c.CustomerController - Cannot find customers
+21:39:19.957 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:39:20.433 [RMI TCP Connection(4)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1561696196, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:39:24.739 [http-nio-8080-exec-3] INFO  l.i.g.j.p.c.CustomerController - Cannot find customers
+21:39:52.359 [RMI TCP Connection(7)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:39:52.734 [RMI TCP Connection(7)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 363456395, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:40:28.163 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked
+21:40:28.630 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 721863041, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
