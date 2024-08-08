@@ -39,7 +39,6 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     @Override
     public boolean update(String id, Customer entity, Connection connection) throws Exception {
-        System.out.println("CustomerDAOImpl.update:"+id);
         try{
             var ps = connection.prepareStatement(UPDATE_CUSTOMER);
             ps.setString(1, entity.getName());
