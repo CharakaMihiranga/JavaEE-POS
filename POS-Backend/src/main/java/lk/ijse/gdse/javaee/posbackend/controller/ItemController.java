@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lk.ijse.gdse.javaee.posbackend.bo.BOFactory;
 import lk.ijse.gdse.javaee.posbackend.bo.custom.ItemBO;
-import lk.ijse.gdse.javaee.posbackend.dto.ItemDto;
+import lk.ijse.gdse.javaee.posbackend.dto.ItemDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,7 +48,7 @@ public class ItemController extends HttpServlet {
            resp.sendError(HttpServletResponse.SC_BAD_REQUEST);
        }
        try(var writer = resp.getWriter()){
-           ItemDto item = jsonb.fromJson(req.getReader(), ItemDto.class);
+           ItemDTO item = jsonb.fromJson(req.getReader(), ItemDTO.class);
               writer.write(itemBO.saveItem(item, connection));
                 logger.info("Item saved successfully");
                 resp.setStatus(HttpServletResponse.SC_CREATED);
@@ -80,7 +80,7 @@ public class ItemController extends HttpServlet {
            }
         }else if(req.getParameter("id") == null){
             try(var writer = resp.getWriter()){
-                List<ItemDto> items = itemBO.getAllItems(connection);
+                List<ItemDTO> items = itemBO.getAllItems(connection);
                 jsonb.toJson(items, writer);
                 logger.info("All items retrieved successfully: {}", items);
             }catch (Exception e){
@@ -94,7 +94,7 @@ public class ItemController extends HttpServlet {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try(var writer = resp.getWriter()){
             var itemCode = req.getParameter("code");
-            ItemDto item = jsonb.fromJson(req.getReader(), ItemDto.class);
+            ItemDTO item = jsonb.fromJson(req.getReader(), ItemDTO.class);
             if(itemBO.updateItem(itemCode, item, connection)){
                 resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
                 logger.info("Item updated successfully: {}", item);

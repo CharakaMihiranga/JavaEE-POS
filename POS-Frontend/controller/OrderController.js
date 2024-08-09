@@ -1,7 +1,12 @@
 import { getAll, getCus } from "../model/CustomerModel.js";
 import { getItems, getItem } from "../model/ItemModel.js";
+import { getAllOrders, searchOrder, saveOrder } from "../model/OrderModel.js";
+import OrderTableDto from "../tableDto/OrderTableDto.js";
+import OrderDetailTableDto from "../tableDto/OrderDetailTableDto.js";
+export { clearAllFields, setDate, generateNextOrderID, setCustomerList, setItemList };
 
 setDate();
+generateNextOrderID();
 setCustomerList();
 setItemList();
 
@@ -11,6 +16,25 @@ function setDate() {
     date.getMonth() + 1
   }/${date.getDate()}/${date.getFullYear()}`;
   $("#order-date").val(formattedDate);
+}
+
+async function generateNextOrderID() {
+  let id = "ORD00-001";
+  let orders = await getAllOrders();
+  let lastOrder = orders[orders.length - 1];
+  if (lastOrder) {
+    let lastID = lastOrder.orderId;
+    let number = parseInt(lastID.substring(6));
+    number++;
+    if (number < 10) {
+      id = `ORD00-00${number}`;
+    } else if (number < 100) {
+      id = `ORD00-0${number}`;
+    } else {
+      id = `ORD00-${number}`;
+    }
+  }
+  $("#order-id").val(id);
 }
 
 async function setCustomerList() {
@@ -31,13 +55,16 @@ async function setCustomerList() {
 
 $("#customer-list").change(async function () {
   let selectedId = $("#customer-list").val();
-  let customer = await getCus(selectedId);
-  console.log(customer);
+  setCusDetails(selectedId);
+});
+
+async function setCusDetails(cusId) {
+  let customer = await getCus(cusId);
   $("#cus-id-order").val(customer.id);
   $("#cus-name-order").val(customer.name);
   $("#cus-address-order").val(customer.address);
   $("#cus-salary-order").val(customer.salary);
-});
+}
 
 async function setItemList() {
   let itemList = $("#item-list");
@@ -65,287 +92,227 @@ $("#item-list").change(async function () {
   $("#item-price-order").val(item.unitPrice);
 });
 
-// import { OrderDto } from "../dto/OrderDto.js";
-// import { OrderDetailDto } from "../dto/OrderDetailDto.js";
-// import { getAllOrders,saveOrder,searchOrder,updateItemQuantity} from "../model/OrderModel.js";
-// import {getAllCustomers} from "../model/CustomerModel.js";
-// import {getAllItems} from "../model/ItemModel.js";
+$("#order-id").keydown(async function (event) {
+  if (event.key === "Enter") {
+    let orderId = $("#order-id").val();
+    let order = await searchOrder(orderId);
+    console.log("at", order);
+    if (order) {
+      $("#order-date").val(order.orderDate);
+      $("#cus-address-order").val(order.address);
+      $("#total-order").text(order.total);
+      $("#sub-total-order").text(order.subTotal);
+      $("#discount").val(order.discount);
+      $("#paidAmount").val(order.paidAmount);
+      $("#balance").val(order.balance);
+      setCusDetails(order.customerId);
 
-// export {setCustomerList,setItemList,setDate};
+      let table = $("#cart-table").find("tbody");
+      table.html("");
+      if (Array.isArray(order.orderDetails)) {
+        order.orderDetails.forEach((orderDetail) => {
+          let row = `<tr>
+                      <td>${orderDetail.itemCode}</td>
+                      <td>${orderDetail.itemName}</td>
+                      <td>${orderDetail.itemPrice}</td>
+                      <td>${orderDetail.quantity}</td>
+                      <td>${orderDetail.total}</td>
+                      <td><button type="button" class="btn btn-danger">Remove</button></td>
+                    </tr>`;
+          table.append(row);
+        });
+      }
+    } else {
+      alert("Order not found!");
+    }
+  }
+});
 
-// generateNextOrderId();
-// setDate();
-// setItemList();
+$("#discount").on("input", function () {
+  event.preventDefault();
+  let subTotal = parseFloat($("#sub-total-order").text()) || 0;
+  let discount = parseFloat($("#discount").val()) || 0;
+  let discountedTotal = subTotal - (subTotal * discount) / 100;
+  $("#total-order").text(discountedTotal.toFixed(2));
+  generateTheBalance(discountedTotal);
+});
 
-// document.getElementById('discount').addEventListener('input', updateDiscountedTotal);
-// document.getElementById('additem-btn').addEventListener('click',addItemBtnOnAction);
-// document.getElementById('btn-purchase').addEventListener('click', btnPurchaseOnAction);
-// document.getElementById('order-id').addEventListener('keydown',searchOrderOnAction);
+function generateTheBalance(discountedTotal) {
+  let paidAmount = parseFloat($("#paidAmount").val()) || 0;
+  let balance = paidAmount - discountedTotal;
+  $("#balance").val(balance.toFixed(2));
+}
 
-// function searchOrderOnAction(event){
-//   if(event.key === 'Enter'){
-//     let orderId = document.getElementById('order-id').value;
-//     let order = searchOrder(orderId);
-//     if(order){
-//       document.getElementById('order-date').value = order._orderDate;
-//       document.getElementById('cus-id-order').value = order._customerId;
-//       document.getElementById('cus-name-order').value = order._customerName;
-//       document.getElementById('cus-address-order').value = order._customerAddress;
-//       document.getElementById('cus-salary-order').value = order._customerSalary;
-//       document.getElementById('total-order').innerText = order._totalAmount;
-//       document.getElementById('sub-total-order').innerText = order._subtotalAmount;
-//       document.getElementById('discount').value = order._discount;
-//       document.getElementById('paidAmount').value = order._paidAmount;
-//       document.getElementById('balance').value = order._balance;
+$("#additem-btn").click(function () {
+  event.preventDefault();
+  let orderId = $("#order-id").val();
+  let itemCode = $("#item-code-order").val();
+  let itemName = $("#item-name-order").val();
+  let itemPrice = parseFloat($("#item-price-order").val());
+  let itemQty = parseInt($("#ordered-qty").val());
+  let total = itemPrice * itemQty;
 
-//       let table = document.getElementById('cart-table').getElementsByTagName('tbody')[0];
-//       table.innerHTML = '';
-//       if (Array.isArray(order._orderDetails)) {
-//         console.log('order:',order._orderDetails);
-//         order._orderDetails.forEach(orderDetail => {
-//             let table = document.getElementById('cart-table').getElementsByTagName('tbody')[0];
-//             let row = table.insertRow();
-//             let itemCodeCell = row.insertCell(0);
-//             let itemNameCell = row.insertCell(1);
-//             let itemPriceCell = row.insertCell(2);
-//             let itemQtyCell = row.insertCell(3);
-//             let itemTotalCell = row.insertCell(4);
-//             let deleteBtnCell = row.insertCell(5);
+  if (
+    orderId === "" ||
+    itemCode === "" ||
+    itemName === "" ||
+    itemQty === "" ||
+    itemPrice === ""
+  ) {
+    alert("Select an item and add order quantity!");
+  } else {
+    let orderDetail = new OrderDetailTableDto(
+      orderId,
+      itemCode,
+      itemName,
+      itemPrice,
+      itemQty,
+      total
+    );
+    addOrderDetailToCart(orderDetail);
+    clearItemFields();
+    updateTotal();
+    setItemList();
+  }
+});
 
-//             itemCodeCell.innerHTML = orderDetail._itemCode;
-//             itemNameCell.innerHTML = orderDetail._itemName;
-//             itemQtyCell.innerHTML = orderDetail._orderedQty;
-//             itemPriceCell.innerHTML = orderDetail._itemPrice;
-//             itemTotalCell.innerHTML = orderDetail._totalPrice;
+function addOrderDetailToCart(orderDetail) {
+  let $tableBody = $("#cart-table tbody");
 
-//         });
-//       }
-//      }else{
-//       alert('Order not found!');
-//     }
-//   }
-// }
+  let $existingItem = $tableBody.find("tr").filter(function () {
+    return $(this).find("td").eq(0).text() === orderDetail.itemCode;
+  });
 
-// function btnPurchaseOnAction(){
+  if ($existingItem.length > 0) {
+    let existingQty = parseInt($existingItem.find("td").eq(3).text(), 10);
+    let newQty = existingQty + parseInt(orderDetail.quantity, 10);
+    $existingItem.find("td").eq(3).text(newQty);
+    $existingItem
+      .find("td")
+      .eq(4)
+      .text(orderDetail.itemPrice * newQty);
+  } else {
+    let $newRow = $("<tr></tr>");
+    $("<td></td>").text(orderDetail.itemCode).appendTo($newRow);
+    $("<td></td>").text(orderDetail.itemName).appendTo($newRow);
+    $("<td></td>").text(orderDetail.itemPrice).appendTo($newRow);
+    $("<td></td>").text(orderDetail.quantity).appendTo($newRow);
+    $("<td></td>").text(orderDetail.total).appendTo($newRow);
+    $("<td></td>")
+      .html('<button type="button" class="btn btn-danger">Remove</button>')
+      .appendTo($newRow);
 
-//     event.preventDefault();
+    $tableBody.append($newRow);
+  }
+}
 
-//     let orderId = document.getElementById('order-id').value;
-//     let orderDate = document.getElementById('order-date').value;
-//     let customerId = document.getElementById('cus-id-order').value;
-//     let customerName = document.getElementById('cus-name-order').value;
-//     let customerAddress = document.getElementById('cus-address-order').value;
-//     let customerSalary = document.getElementById('cus-salary-order').value;
-//     let totalAmount = document.getElementById('total-order').innerText;
-//     let subtotalAmount = document.getElementById('sub-total-order').innerText;
-//     let discount = document.getElementById('discount').value;
-//     let paidAmount = document.getElementById('paidAmount').value;
-//     let balance = document.getElementById('balance').value;
+function clearItemFields() {
+  $("#item-code-order").val("");
+  $("#item-name-order").val("");
+  $("#item-qty-order").val("");
+  $("#item-price-order").val("");
+  $("#ordered-qty").val("");
+}
 
-//     if(customerId !== '' && customerName !== '' && customerAddress !== '' && customerSalary !== '' && totalAmount !== '' && subtotalAmount !== '' && discount !== '' && paidAmount !== '' && balance !== ''){
+function updateTotal() {
+  let $tableBody = $("#cart-table tbody");
+  let total = 0;
+  $tableBody.find("tr").each(function () {
+    total += parseFloat($(this).find("td").eq(4).text());
+  });
+  $("#sub-total-order").text(total);
+  $("#total-order").text(total);
+}
 
-//     let orderDetails = [];
+$("#cart-table").click(function (event) {
+  if (event.target && event.target.nodeName === "BUTTON") {
+    let row = event.target.parentNode.parentNode;
+    row.remove();
+    updateTotal();
+  }
+});
 
-//     let table = document.getElementById('cart-table').getElementsByTagName('tbody')[0];
-//     let rows = table.rows;
-//     for(let i = 0; i < rows.length; i++){
-//       let orderDetail = new OrderDetailDto(
-//         orderId,
-//         rows[i].cells[0].innerHTML,
-//         rows[i].cells[1].innerHTML,
-//         rows[i].cells[2].innerHTML,
-//         document.getElementById('item-qty-order').value,
-//         rows[i].cells[3].innerHTML,
-//         rows[i].cells[4].innerHTML
-//       );
-//       orderDetails.push(orderDetail);
-//     }
+$("#btn-purchase").click(async function () {
+  event.preventDefault();
 
-//     let order = new OrderDto(
-//       orderId,
-//       orderDate,
-//       customerId,
-//       customerName,
-//       customerAddress,
-//       customerSalary,
-//       totalAmount,
-//       subtotalAmount,
-//       discount,
-//       paidAmount,
-//       balance,
-//       orderDetails
-//     );
+  let orderId = $("#order-id").val();
+  let orderDate = $("#order-date").val();
+  let cusId = $("#cus-id-order").val();
+  let total = parseFloat($("#total-order").text());
+  let subTotal = parseFloat($("#sub-total-order").text());
+  let paidAmount = parseFloat($("#paidAmount").val());
+  let discount = parseFloat($("#discount").val());
+  let balance = parseFloat($("#balance").val());
+  let address = $("#cus-address-order").val();
 
-//     let isSaved = saveOrder(order);
+  if (
+    orderId !== "" &&
+    orderDate !== "" &&
+    cusId !== "" &&
+    total !== "" &&
+    subTotal !== "" &&
+    paidAmount !== "" &&
+    discount !== "" &&
+    balance !== "" &&
+    address !== ""
+  ) {
+    let orderDetails = [];
+    let table = $("#cart-table").find("tbody");
+    table.find("tr").each(function () {
+      let itemCode = $(this).find("td").eq(0).text();
+      let itemName = $(this).find("td").eq(1).text();
+      let itemPrice = parseFloat($(this).find("td").eq(2).text());
+      let total = parseFloat($(this).find("td").eq(4).text());
+      let quantity = $(this).find("td").eq(3).text();
+      let orderDetail = new OrderDetailTableDto(
+        orderId,
+        itemCode,
+        itemName,
+        itemPrice,
+        quantity,
+        total
+      );
+      orderDetails.push(orderDetail);
+    });
 
-//     if(isSaved){
-//       alert('Order has been saved successfully!');
-//       clearFields();
-//       generateNextOrderId();
-//       setDate();
-//       updateItemQuantity(order._orderDetails);
-//     }
+    let resp = await saveOrder(
+      orderId,
+      orderDate,
+      cusId,
+      total,
+      subTotal,
+      paidAmount,
+      discount,
+      balance,
+      address,
+      orderDetails
+    );
+    
+    if (resp) {
+      alert("Order has been placed successfully!");
+      clearAllFields();
+      setCustomerList();
+      setItemList();
+    }
+  } else {
+    alert("Fill all the fields!");
+  }
+});
 
-//     }else{
-//       alert('Fill all the fields!');
-//     }
-// }
-
-// export function generateNextOrderId() {
-//   let orders = getAllOrders();
-//   let lastOrder = orders[orders.length - 1];
-//   let lastID = lastOrder ? lastOrder._orderId : "O00-000";
-//   let idParts = lastID.split("-");
-//   let prefix = idParts[0];
-//   let number = parseInt(idParts[1]) + 1;
-//   let nextID = prefix + "-" + number.toString().padStart(3, "0");
-
-//   document.getElementById('order-id').value = nextID;
-// }
-
-// function addItemBtnOnAction(){
-
-//   event.preventDefault();
-
-//   let orderId = document.getElementById('order-id').value;
-//   let itemCode = document.getElementById('item-code-order').value;
-//   let itemName = document.getElementById('item-name-order').value;
-//   let itemQty = document.getElementById('item-qty-order').value;
-//   let itemPrice = document.getElementById('item-price-order').value;
-//   let orderQty = document.getElementById('ordered-qty').value;
-
-//   if(orderId === '' || itemCode === '' || itemName === '' || itemQty === '' || itemPrice === '' || orderQty === ''){
-//     alert('Select an item and add order quantity!');
-//   }else{
-
-//     let orderDetail = new OrderDetailDto(
-
-//       orderId,
-//       itemCode,
-//       itemName,
-//       itemPrice,
-//       itemQty,
-//       orderQty,
-//       itemPrice * orderQty
-
-//     );
-
-//     addOrderDetailToTable(orderDetail);
-//     clearItemFields();
-//     updateTheQuantity(orderDetail._itemCode, orderDetail._orderedQty);
-//     updateTotal();
-
-//   }
-
-// }
-
-// function updateTotal(){
-
-//     let table = document.getElementById('cart-table').getElementsByTagName('tbody')[0];
-//     let rows = table.rows;
-//     let total = 0;
-//     for(let i = 0; i < rows.length; i++){
-//       total += parseInt(rows[i].cells[4].innerHTML);
-//     }
-//     document.getElementById('sub-total-order').innerText = total;
-//     document.getElementById('total-order').innerText = total;
-
-// }
-
-// function updateDiscountedTotal(){
-//   let subTotal = document.getElementById('sub-total-order').innerText;
-//   let discount = document.getElementById('discount').value;
-//   let discountedTotal = subTotal - (subTotal * discount / 100);
-//   document.getElementById('total-order').innerText = discountedTotal;
-
-//   generateTheBalance(discountedTotal);
-// }
-
-// function generateTheBalance(discountedTotal){
-//   let paidAmount = document.getElementById('paidAmount').value;
-//   let balance = paidAmount - discountedTotal;
-//   document.getElementById('balance').value = balance;
-// }
-
-// function updateTheQuantity(itemCode, orderedQty){
-//   let items = getAllItems();
-//   let item = items.find(item => item._code === itemCode);
-//   let index = items.indexOf(item);
-//   items[index]._qty -= orderedQty;
-// }
-
-// function addOrderDetailToTable(orderDetail){
-
-//   let table = document.getElementById('cart-table').getElementsByTagName('tbody')[0];
-
-//   let existingItem = Array.from(table.rows).find(row => row.cells[0].innerHTML === orderDetail._itemCode);
-//   if (existingItem) {
-//     let existingQty = parseInt(existingItem.cells[3].innerHTML);
-//     let newQty = existingQty + parseInt(orderDetail._orderedQty);
-//     existingItem.cells[3].innerHTML = newQty;
-//     existingItem.cells[4].innerHTML = orderDetail._itemPrice * newQty;
-//   } else {
-//     let newRow = table.insertRow(table.rows.length);
-//     let cell1 = newRow.insertCell(0);
-//     let cell2 = newRow.insertCell(1);
-//     let cell3 = newRow.insertCell(2);
-//     let cell4 = newRow.insertCell(3);
-//     let cell5 = newRow.insertCell(4);
-//     let cell6 = newRow.insertCell(5);
-
-//     cell1.innerHTML = orderDetail._itemCode;
-//     cell2.innerHTML = orderDetail._itemName;
-//     cell3.innerHTML = orderDetail._itemPrice;
-//     cell4.innerHTML = orderDetail._orderedQty;
-//     cell5.innerHTML = orderDetail._totalPrice;
-//     cell6.innerHTML = `<button type="button" class="btn btn-danger" >Remove</button>`;
-//   }
-
-// }
-
-// document.getElementById('cart-table').addEventListener('click', function(event) {
-//   if (event.target && event.target.nodeName === 'BUTTON') {
-//     deleteOrderDetail(event.target);
-//   }
-// });
-
-// function deleteOrderDetail(row){
-//   let i = row.parentNode.parentNode.rowIndex;
-//   document.getElementById('cart-table').deleteRow(i);
-//   updateQtyAfterDelete(row.parentNode.parentNode.cells[0].innerHTML, row.parentNode.parentNode.cells[3].innerHTML);
-//   updateTotal();
-// }
-
-// function updateQtyAfterDelete(itemCode, orderedQty){
-//   let items = getAllItems();
-//   let item = items.find(item => item._code === itemCode);
-//   let index = items.indexOf(item);
-//   items[index]._qty += parseInt(orderedQty);
-
-// }
-
-// function clearItemFields(){
-//   document.getElementById('item-code-order').value = '';
-//   document.getElementById('item-name-order').value = '';
-//   document.getElementById('item-qty-order').value = '';
-//   document.getElementById('item-price-order').value = '';
-//   document.getElementById('ordered-qty').value = '';
-// }
-
-// export function clearFields(){
-//   document.getElementById('order-id').value = '';
-//   document.getElementById('order-date').value = '';
-//   document.getElementById('cus-id-order').value = '';
-//   document.getElementById('cus-name-order').value = '';
-//   document.getElementById('cus-address-order').value = '';
-//   document.getElementById('cus-salary-order').value = '';
-//   document.getElementById('total-order').innerText = '0.00';
-//   document.getElementById('sub-total-order').innerText = '0.00';
-//   document.getElementById('discount').value = '';
-//   document.getElementById('paidAmount').value = '';
-//   document.getElementById('balance').value = '';
-//   document.getElementById('cart-table').getElementsByTagName('tbody')[0].innerHTML = '';
-
-//   setCustomerList();
-//   setItemList();
-// }
+function clearAllFields() {
+  $("#order-id").val("");
+  $("#order-date").val("");
+  $("#cus-id-order").val("");
+  $("#cus-name-order").val("");
+  $("#cus-address-order").val("");
+  $("#cus-salary-order").val("");
+  $("#total-order").text("0.00");
+  $("#sub-total-order").text("0.00");
+  $("#discount").val("");
+  $("#paidAmount").val("");
+  $("#balance").val("");
+  $("#cart-table").find("tbody").html("");
+  clearItemFields();
+  generateNextOrderID();
+  setDate();
+}

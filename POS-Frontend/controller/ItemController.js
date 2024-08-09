@@ -7,6 +7,9 @@ import {
   getItems,
 } from "../model/ItemModel.js";
 
+export {getAllItems};
+
+
 clearTable();
 clearFields();
 getAllItems();
@@ -104,9 +107,9 @@ async function deleteItem(code) {
   try {
     if (confirm("Are you sure you want to delete this item?")) {
       await removeItem(code);
-      getAllItems();
       clearFields();
       generateNextItemCode();
+      getAllItems();
       alert("Item Deleted Successfully!");
     }
   } catch (error) {
@@ -185,8 +188,6 @@ async function generateNextItemCode() {
 }
 function isItemValidated(code, name, qty, unitPrice) {
   let isValid = true;
-  
-  // Item Code validation (I00-XXX)
   const codePattern = /^I00-\d{3}$/;
   if (!codePattern.test(code)) {
     isValid = false;
@@ -194,8 +195,6 @@ function isItemValidated(code, name, qty, unitPrice) {
   } else {
     document.getElementById('itemCode-error').textContent = '';
   }
-  
-  // Item Name validation (cannot be empty and must not contain numbers)
   const namePattern = /^[A-Za-z\s]+$/;
   if (name.trim() === '') {
     isValid = false;
@@ -206,16 +205,12 @@ function isItemValidated(code, name, qty, unitPrice) {
   } else {
     document.getElementById('itemName-error').textContent = '';
   }
-  
-  // Item Quantity validation (must be a positive number)
   if (isNaN(qty) || parseInt(qty) <= 0) {
     isValid = false;
     document.getElementById('itemQty-error').textContent = 'Quantity must be a positive number';
   } else {
     document.getElementById('itemQty-error').textContent = '';
   }
-  
-  // Unit Price validation (must be a positive number)
   if (isNaN(unitPrice) || parseFloat(unitPrice) <= 0) {
     isValid = false;
     document.getElementById('unitPrice-error').textContent = 'Unit Price must be a positive number';

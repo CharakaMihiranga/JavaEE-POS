@@ -1,3 +1,9 @@
+import { getAll } from "../model/CustomerModel.js";
+import { getItems } from "../model/ItemModel.js";
+import { getAllOrders } from "../model/OrderModel.js";
+import { getAllItems } from "./ItemController.js";
+import  { clearAllFields, setDate, generateNextOrderID, setCustomerList, setItemList } from "./OrderController.js";
+
 // import ItemCart from "../cart/ItemCart";
 // import { getAll, save, isExist, deleteItem, update } from "../model/ItemModel";
 
@@ -6,65 +12,60 @@
 // import {setCustomerList, setItemList , generateNextOrderId ,clearFields,setDate} from './OrderController.js';
 // import {loadAllItems} from './ItemController.js';
 
-// import { getAllCustomers } from '../model/CustomerModel.js';
-// import { getAllItems } from '../model/ItemModel.js';
-// import { getAllOrders } from '../model/OrderModel.js';
 
+$(document).ready(function() {
 
+  setDataToHomePage();
 
-// $(document).ready(function() {
+  $('#homePage').show();
 
-//   setDataToHomePage();
+  $('.nav-link').click(function(event) {
+    event.preventDefault();
 
-//   $('#homePage').show();
+    $('section').hide();
 
-//   $('.nav-link').click(function(event) {
-//     event.preventDefault();
+    var targetSection = $(this).attr('href');
 
-//     $('section').hide();
+    $(targetSection).show();
+    switch (targetSection) {
 
-//     var targetSection = $(this).attr('href');
+      case '#HomePage':
+        $('.sec-name').text('POS System');
+        document.title = "POS System";
+        setDataToHomePage();
+        break;
 
-//     $(targetSection).show();
-//     switch (targetSection) {
+      case '#CustomerManage':
+        $('.sec-name').text('Customer Manage');
+        document.title = "Customer Manage";
+        break;
+      case '#ItemManage':
+        $('.sec-name').text('Item Manage');
+        document.title = "Item Manage";
+        getAllItems();
+        break;
+      case '#OrderManage':
+        $('.sec-name').text('Order Manage');
+        document.title = "Place Order";
+        clearAllFields();
+        setCustomerList();
+        setItemList();
+        generateNextOrderID();
+        setDate();
+        break;
+      default:
+        $('.sec-name').text('POS System');
+        document.title = "POS System";
+    }
+  });
+});
 
-//       case '#HomePage':
-//         $('.sec-name').text('POS System');
-//         document.title = "POS System";
-//         setDataToHomePage();
-//         break;
+async function setDataToHomePage() {
+  let customers = await getAll();
+  let items = await getItems();
+  let orders = await getAllOrders();
 
-//       case '#CustomerManage':
-//         $('.sec-name').text('Customer Manage');
-//         document.title = "Customer Manage";
-//         break;
-//       case '#ItemManage':
-//         $('.sec-name').text('Item Manage');
-//         document.title = "Item Manage";
-//         loadAllItems();
-//         break;
-//       case '#OrderManage':
-//         $('.sec-name').text('Order Manage');
-//         document.title = "Place Order";
-//         clearFields();
-//         setCustomerList();
-//         setItemList();
-//         generateNextOrderId();
-//         setDate();
-//         break;
-//       default:
-//         $('.sec-name').text('POS System');
-//         document.title = "POS System";
-//     }
-//   });
-// });
-
-// function setDataToHomePage() {
-//   let customers = getAllCustomers();
-//   let items = getAllItems();
-//   let orders = getAllOrders();
-
-//   $('#total-customers').text(customers.length);
-//   $('#total-items').text(items.length);
-//   $('#total-orders').text(orders.length);
-// }
+  $('#total-customers').text(customers.length);
+  $('#total-items').text(items.length);
+  $('#total-orders').text(orders.length);
+}

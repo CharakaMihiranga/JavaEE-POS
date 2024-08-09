@@ -32,6 +32,7 @@ $("#save-cus").click(async function () {
 });
 //clear fields
 $("#clear").click(function () {
+  event.preventDefault();
   clearFields();
 });
 //delete customer
@@ -165,6 +166,7 @@ async function generateNextCustomerID() {
   let lastCustomer = customers[customers.length - 1];
   if (lastCustomer) {
     let lastID = lastCustomer.id;
+    console.log(lastID);
     let number = parseInt(lastID.substring(4, 7));
     number++;
     if (number < 10) {
