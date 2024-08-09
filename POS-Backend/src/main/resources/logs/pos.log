@@ -15177,3 +15177,370 @@ Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot delete or u
 19:30:31.331 [http-nio-8080-exec-9] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
 19:30:31.351 [http-nio-8080-exec-10] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
 19:30:31.365 [http-nio-8080-exec-1] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+20:06:26.964 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:06:27.540 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 1612651992, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:06:27.549 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:06:27.569 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 375794016, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:06:27.573 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:06:27.590 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 694623621, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:06:31.387 [http-nio-8080-exec-10] ERROR l.i.g.j.p.c.PlaceOrderController - Failed to place the order
+jakarta.json.bind.JsonbException: Unable to deserialize property 'orderDate' because of: Error parsing class java.sql.Date from value: 2024-08-09T12:34:56Z. Check your @JsonbDateFormat has all time units for class java.sql.Date type, or consider using org.eclipse.yasson.YassonConfig#ZERO_TIME_PARSE_DEFAULTING.
+	at org.eclipse.yasson.internal.serializer.AbstractContainerDeserializer.deserializeInternal(AbstractContainerDeserializer.java:100)
+	at org.eclipse.yasson.internal.serializer.AbstractContainerDeserializer.deserialize(AbstractContainerDeserializer.java:64)
+	at org.eclipse.yasson.internal.Unmarshaller.deserializeItem(Unmarshaller.java:62)
+	at org.eclipse.yasson.internal.Unmarshaller.deserialize(Unmarshaller.java:51)
+	at org.eclipse.yasson.internal.JsonBinding.deserialize(JsonBinding.java:59)
+	at org.eclipse.yasson.internal.JsonBinding.fromJson(JsonBinding.java:80)
+	at lk.ijse.gdse.javaee.posbackend.controller.PlaceOrderController.doPost(PlaceOrderController.java:50)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at lk.ijse.gdse.javaee.posbackend.filter.CORSFilter.doFilter(CORSFilter.java:24)
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at lk.ijse.gdse.javaee.posbackend.filter.CORSFilter.doFilter(CORSFilter.java:24)
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: jakarta.json.bind.JsonbException: Error parsing class java.sql.Date from value: 2024-08-09T12:34:56Z. Check your @JsonbDateFormat has all time units for class java.sql.Date type, or consider using org.eclipse.yasson.YassonConfig#ZERO_TIME_PARSE_DEFAULTING.
+	at org.eclipse.yasson.internal.serializer.AbstractDateTimeDeserializer.parseWithFormatterInternal(AbstractDateTimeDeserializer.java:135)
+	at org.eclipse.yasson.internal.serializer.AbstractDateTimeDeserializer.deserialize(AbstractDateTimeDeserializer.java:59)
+	at org.eclipse.yasson.internal.serializer.AbstractValueTypeDeserializer.deserialize(AbstractValueTypeDeserializer.java:64)
+	at org.eclipse.yasson.internal.serializer.ObjectDeserializer.deserializeNext(ObjectDeserializer.java:183)
+	at org.eclipse.yasson.internal.serializer.AbstractContainerDeserializer.deserializeInternal(AbstractContainerDeserializer.java:94)
+	... 38 common frames omitted
+Caused by: java.time.format.DateTimeParseException: Text '2024-08-09T12:34:56Z' could not be parsed at index 4
+	at java.base/java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:2052)
+	at java.base/java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1954)
+	at java.base/java.time.LocalDate.parse(LocalDate.java:430)
+	at org.eclipse.yasson.internal.serializer.SqlDateTypeDeserializer.parseWithFormatter(SqlDateTypeDeserializer.java:57)
+	at org.eclipse.yasson.internal.serializer.SqlDateTypeDeserializer.parseWithFormatter(SqlDateTypeDeserializer.java:25)
+	at org.eclipse.yasson.internal.serializer.AbstractDateTimeDeserializer.parseWithFormatterInternal(AbstractDateTimeDeserializer.java:133)
+	... 42 common frames omitted
+20:07:17.005 [http-nio-8080-exec-9] ERROR l.i.g.j.p.c.PlaceOrderController - Failed to place the order
+java.lang.RuntimeException: java.lang.RuntimeException: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`javaeepos`.`orders`, CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at lk.ijse.gdse.javaee.posbackend.bo.custom.impl.PlaceOrderBOImpl.placeOrder(PlaceOrderBOImpl.java:81)
+	at lk.ijse.gdse.javaee.posbackend.controller.PlaceOrderController.doPost(PlaceOrderController.java:52)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at lk.ijse.gdse.javaee.posbackend.filter.CORSFilter.doFilter(CORSFilter.java:24)
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at lk.ijse.gdse.javaee.posbackend.filter.CORSFilter.doFilter(CORSFilter.java:24)
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.RuntimeException: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`javaeepos`.`orders`, CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at lk.ijse.gdse.javaee.posbackend.dao.custom.impl.OrderDAOImpl.save(OrderDAOImpl.java:36)
+	at lk.ijse.gdse.javaee.posbackend.dao.custom.impl.OrderDAOImpl.save(OrderDAOImpl.java:12)
+	at lk.ijse.gdse.javaee.posbackend.bo.custom.impl.PlaceOrderBOImpl.placeOrder(PlaceOrderBOImpl.java:35)
+	... 33 common frames omitted
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`javaeepos`.`orders`, CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.tomcat.dbcp.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:137)
+	at org.apache.tomcat.dbcp.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:137)
+	at lk.ijse.gdse.javaee.posbackend.util.SQLUtil.execute(SQLUtil.java:20)
+	at lk.ijse.gdse.javaee.posbackend.dao.custom.impl.OrderDAOImpl.save(OrderDAOImpl.java:21)
+	... 35 common frames omitted
+20:08:36.368 [http-nio-8080-exec-1] ERROR l.i.g.j.p.c.PlaceOrderController - Failed to place the order
+java.lang.RuntimeException: java.lang.RuntimeException: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`javaeepos`.`orders`, CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at lk.ijse.gdse.javaee.posbackend.bo.custom.impl.PlaceOrderBOImpl.placeOrder(PlaceOrderBOImpl.java:81)
+	at lk.ijse.gdse.javaee.posbackend.controller.PlaceOrderController.doPost(PlaceOrderController.java:52)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at lk.ijse.gdse.javaee.posbackend.filter.CORSFilter.doFilter(CORSFilter.java:24)
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at lk.ijse.gdse.javaee.posbackend.filter.CORSFilter.doFilter(CORSFilter.java:24)
+	at jakarta.servlet.http.HttpFilter.doFilter(HttpFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.valves.AbstractAccessLogValve.invoke(AbstractAccessLogValve.java:663)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.lang.RuntimeException: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`javaeepos`.`orders`, CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at lk.ijse.gdse.javaee.posbackend.dao.custom.impl.OrderDAOImpl.save(OrderDAOImpl.java:36)
+	at lk.ijse.gdse.javaee.posbackend.dao.custom.impl.OrderDAOImpl.save(OrderDAOImpl.java:12)
+	at lk.ijse.gdse.javaee.posbackend.bo.custom.impl.PlaceOrderBOImpl.placeOrder(PlaceOrderBOImpl.java:35)
+	... 33 common frames omitted
+Caused by: java.sql.SQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`javaeepos`.`orders`, CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:916)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1061)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1009)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1320)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:994)
+	at org.apache.tomcat.dbcp.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:137)
+	at org.apache.tomcat.dbcp.dbcp2.DelegatingPreparedStatement.executeUpdate(DelegatingPreparedStatement.java:137)
+	at lk.ijse.gdse.javaee.posbackend.util.SQLUtil.execute(SQLUtil.java:20)
+	at lk.ijse.gdse.javaee.posbackend.dao.custom.impl.OrderDAOImpl.save(OrderDAOImpl.java:21)
+	... 35 common frames omitted
+20:35:38.581 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:35:39.149 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 1531158119, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:35:39.161 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:35:39.184 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1089360581, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:35:39.188 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:35:39.208 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 1270564091, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:36:16.294 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:36:16.753 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 508678227, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:36:16.761 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:36:16.786 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 929166148, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:36:16.789 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:36:16.806 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 880641182, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:36:33.364 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:36:33.822 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 1623795319, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:36:33.838 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:36:33.858 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1204229523, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:36:33.862 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:36:33.881 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 90300294, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:40:11.806 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:40:12.259 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 74681416, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:40:12.276 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:40:12.301 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1680663056, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:40:12.305 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:40:12.324 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 824834741, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:43:23.366 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:43:23.837 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 1484118575, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:43:23.845 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:43:23.863 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1012276404, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:43:23.867 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:43:23.884 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 1386469479, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:50:21.445 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:50:22.109 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 20013544, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:50:22.120 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:50:22.138 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1497303056, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:50:22.142 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:50:22.158 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 1488728731, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:50:47.368 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:50:47.840 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 1528826109, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:50:47.850 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:50:47.871 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1016241970, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:50:47.876 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:50:47.896 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 2126870962, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:51:39.145 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:51:39.635 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 1039051371, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:51:39.646 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:51:39.666 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1554356692, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:51:39.670 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:51:39.690 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 2068929647, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:53:49.090 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:53:49.657 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 625533262, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:53:49.667 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:53:49.688 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1189446295, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:53:49.692 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:53:49.709 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 1336947269, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:54:13.868 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+20:54:14.340 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 1834039233, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:54:14.359 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+20:54:14.386 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 448504860, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+20:54:14.391 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+20:54:14.415 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 361715739, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:28:51.633 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+21:28:52.276 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 634321837, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:28:52.288 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+21:28:52.309 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 274121314, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:28:52.313 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+21:28:52.332 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 650738324, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:34:50.968 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+21:34:51.445 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 460051094, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:34:51.464 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+21:34:51.485 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 1396587915, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:34:51.490 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+21:34:51.509 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 2048313149, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:35:23.751 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+21:35:24.210 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 232423041, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:35:24.223 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+21:35:24.242 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 683844410, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:35:24.246 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+21:35:24.264 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 1962682879, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:37:14.585 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+21:37:15.064 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 2091791944, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:37:15.076 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+21:37:15.103 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 2054603052, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:37:15.107 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+21:37:15.131 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 331704581, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:38:34.935 [http-nio-8080-exec-5] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:38:34.936 [http-nio-8080-exec-8] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:38:34.937 [http-nio-8080-exec-7] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:38:34.942 [http-nio-8080-exec-9] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:38:34.942 [http-nio-8080-exec-2] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:38:34.950 [http-nio-8080-exec-6] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:38:34.950 [http-nio-8080-exec-10] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:38:34.956 [http-nio-8080-exec-3] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:38:34.956 [http-nio-8080-exec-4] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:38:34.961 [http-nio-8080-exec-1] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:38:34.964 [http-nio-8080-exec-5] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:38:34.969 [http-nio-8080-exec-8] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:38:50.549 [http-nio-8080-exec-1] ERROR l.i.g.j.p.c.CustomerController - Customer not found: id=C00-001
+21:38:52.099 [http-nio-8080-exec-8] INFO  l.i.g.j.p.c.CustomerController - Customer saved successfully
+21:38:52.110 [http-nio-8080-exec-9] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:38:52.112 [http-nio-8080-exec-10] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:38:52.116 [http-nio-8080-exec-6] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:39:06.840 [http-nio-8080-exec-2] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:39:06.848 [http-nio-8080-exec-1] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:39:06.856 [http-nio-8080-exec-8] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:39:08.127 [http-nio-8080-exec-9] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:39:17.884 [http-nio-8080-exec-3] ERROR l.i.g.j.p.controller.ItemController - Item not found : idI00-001
+21:39:18.883 [http-nio-8080-exec-4] INFO  l.i.g.j.p.controller.ItemController - Item saved successfully
+21:39:18.891 [http-nio-8080-exec-1] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=50, unitPrice=250.0)]
+21:39:18.895 [http-nio-8080-exec-5] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=50, unitPrice=250.0)]
+21:39:18.900 [http-nio-8080-exec-8] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=50, unitPrice=250.0)]
+21:39:21.491 [http-nio-8080-exec-3] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:39:21.493 [http-nio-8080-exec-7] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=50, unitPrice=250.0)]
+21:39:21.494 [http-nio-8080-exec-2] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:39:21.497 [http-nio-8080-exec-4] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:39:23.557 [http-nio-8080-exec-7] INFO  l.i.g.j.p.c.CustomerController - Customer retrieved successfully: CustomerDto(id=C00-001, name=charaka, address=matara, salary=50000.0)
+21:39:24.991 [http-nio-8080-exec-2] INFO  l.i.g.j.p.controller.ItemController - Item retrieved successfully: ItemDTO(code=I00-001, name=car, qty=50, unitPrice=250.0)
+21:39:27.675 [http-nio-8080-exec-8] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=50, unitPrice=250.0)]
+21:39:35.790 [http-nio-8080-exec-9] INFO  l.i.g.j.p.b.c.impl.PlaceOrderBOImpl - Save order in transaction process Success
+21:39:35.795 [http-nio-8080-exec-9] INFO  l.i.g.j.p.b.c.impl.PlaceOrderBOImpl - Save orderDetail in transaction process Success
+21:39:35.797 [http-nio-8080-exec-9] INFO  l.i.g.j.p.b.c.impl.PlaceOrderBOImpl - Update item qty in transaction process Success
+21:39:35.800 [http-nio-8080-exec-9] INFO  l.i.g.j.p.c.PlaceOrderController - Order placed successfully
+21:39:37.151 [http-nio-8080-exec-3] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:39:37.155 [http-nio-8080-exec-3] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=46, unitPrice=250.0)]
+21:39:37.158 [http-nio-8080-exec-4] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:39:40.284 [http-nio-8080-exec-6] INFO  l.i.g.j.p.c.PlaceOrderController - Order retrieved successfully
+21:39:40.293 [http-nio-8080-exec-5] INFO  l.i.g.j.p.c.CustomerController - Customer retrieved successfully: CustomerDto(id=C00-001, name=charaka, address=matara, salary=50000.0)
+21:42:42.706 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+21:42:43.319 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 179509940, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:42:43.334 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+21:42:43.353 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 347297246, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:42:43.357 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+21:42:43.378 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 2037826298, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:47:07.072 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+21:47:07.527 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 976407530, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:47:07.535 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+21:47:07.555 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 503538361, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:47:07.559 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+21:47:07.578 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 67708716, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:49:06.854 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+21:49:07.283 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 366594662, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:49:07.292 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+21:49:07.309 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 337947059, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:49:07.314 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+21:49:07.330 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 1132416100, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:50:16.096 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+21:50:16.547 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 1538884256, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:50:16.560 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+21:50:16.577 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 519451667, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:50:16.584 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+21:50:16.603 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 1657160269, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:51:03.971 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Init method Invoked in PlaceOrderController
+21:51:04.429 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.PlaceOrderController - Connection initialized: 927622764, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:51:04.445 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Init method Invoked in CustomerController
+21:51:04.470 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.c.CustomerController - Connection initialized: 686095679, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:51:04.475 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Init method Invoked in ItemController
+21:51:04.492 [RMI TCP Connection(2)-127.0.0.1] INFO  l.i.g.j.p.controller.ItemController - Connection initialized: 1273972333, URL=jdbc:mysql://localhost:3306/javaeepos?createDatabaseIfNotExist=true, MySQL Connector/J
+21:51:17.803 [http-nio-8080-exec-4] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:17.804 [http-nio-8080-exec-8] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:51:17.810 [http-nio-8080-exec-5] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:17.802 [http-nio-8080-exec-2] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=46, unitPrice=250.0)]
+21:51:17.815 [http-nio-8080-exec-10] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=46, unitPrice=250.0)]
+21:51:17.820 [http-nio-8080-exec-3] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:17.820 [http-nio-8080-exec-6] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=46, unitPrice=250.0)]
+21:51:17.824 [http-nio-8080-exec-7] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=46, unitPrice=250.0)]
+21:51:17.825 [http-nio-8080-exec-9] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:17.831 [http-nio-8080-exec-4] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=46, unitPrice=250.0)]
+21:51:17.831 [http-nio-8080-exec-1] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:17.837 [http-nio-8080-exec-8] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:51:22.859 [http-nio-8080-exec-8] INFO  l.i.g.j.p.c.CustomerController - Customer retrieved successfully: CustomerDto(id=C00-001, name=charaka, address=matara, salary=50000.0)
+21:51:23.816 [http-nio-8080-exec-5] INFO  l.i.g.j.p.c.CustomerController - Customer deleted successfully: id=C00-001
+21:51:23.819 [http-nio-8080-exec-7] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:23.821 [http-nio-8080-exec-9] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:23.826 [http-nio-8080-exec-4] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:25.553 [http-nio-8080-exec-2] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:25.561 [http-nio-8080-exec-8] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=46, unitPrice=250.0)]
+21:51:25.567 [http-nio-8080-exec-10] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:51:27.246 [http-nio-8080-exec-6] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: [ItemDTO(code=I00-001, name=car, qty=46, unitPrice=250.0)]
+21:51:29.070 [http-nio-8080-exec-7] ERROR l.i.g.j.p.controller.ItemController - Item not found : idI00-002
+21:51:31.739 [http-nio-8080-exec-3] INFO  l.i.g.j.p.controller.ItemController - Item retrieved successfully: ItemDTO(code=I00-001, name=car, qty=46, unitPrice=250.0)
+21:51:32.534 [http-nio-8080-exec-10] INFO  l.i.g.j.p.controller.ItemController - Item deleted successfully: I00-001
+21:51:32.536 [http-nio-8080-exec-7] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:51:32.539 [http-nio-8080-exec-4] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:51:32.542 [http-nio-8080-exec-2] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:51:40.671 [http-nio-8080-exec-9] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:40.680 [http-nio-8080-exec-3] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:51:40.687 [http-nio-8080-exec-5] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:51:42.167 [http-nio-8080-exec-9] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:51:42.167 [http-nio-8080-exec-8] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:51:42.167 [http-nio-8080-exec-1] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:42.171 [http-nio-8080-exec-3] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:51:43.179 [http-nio-8080-exec-6] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:43.184 [http-nio-8080-exec-5] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:51:43.189 [http-nio-8080-exec-10] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:51:44.179 [http-nio-8080-exec-2] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
+21:51:44.180 [http-nio-8080-exec-4] INFO  l.i.g.j.p.c.CustomerController - All customers retrieved successfully
+21:51:44.180 [http-nio-8080-exec-7] INFO  l.i.g.j.p.controller.ItemController - All items retrieved successfully: []
+21:51:44.184 [http-nio-8080-exec-9] INFO  l.i.g.j.p.c.PlaceOrderController - All orders retrieved successfully
